@@ -1,12 +1,16 @@
 import traceback
+from pathlib import Path
 
 import db
 from download import get_lightcurve
 from search import run_bls
 from plots import save_plot
 
-TARGETS = [100100827, 261136679]
+
+LIMIT = 20
 FORCE = False
+TARGET_FILE = Path(__file__).resolve().parent.parent / "data" / "targets.txt"
+TARGETS = [int(x) for x in TARGET_FILE.read_text().split()][:LIMIT]
 
 con = db.connect()
 
