@@ -14,6 +14,7 @@ NEW_COLUMNS = {
     "flag_secondary": "INTEGER",
     "flag_edge": "INTEGER",
     "npz_path": "TEXT",
+    "oot_ratio": "REAL",
 }
 
 

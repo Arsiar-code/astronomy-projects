@@ -1,3 +1,5 @@
+import vetting
+
 import traceback
 from pathlib import Path
 
@@ -25,6 +27,7 @@ for tic in TARGETS:
             print(f"TIC {tic}: keine Daten")
             continue
         res, flat, pg = run_bls(lc)
+        res.update(vetting.vet(flat, res))
         plot = save_plot(tic, flat, pg, res)
         db.save(con, tic, "ok", res, n_sectors, plot)
         print(f"TIC {tic}: P={res['period']:.4f} d, SNR={res['snr']:.1f}")
