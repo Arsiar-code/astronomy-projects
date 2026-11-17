@@ -1,7 +1,16 @@
 import numpy as np
 
 
+def mask_edges(lc, gap=0.5, trim=0.5):
+    """Entfernt Daten kurz vor und nach jeder Lücke sowie am Anfang und Ende."""
+    t = lc.time.value
+    keep = ((t - t[0]) > trim) & ((t[-1] - t) > trim)
+    for i in np.where(np.diff(t) > gap)[0]:
+        keep &= ~((t > t[i] - trim) & (t < t[i + 1] + trim))
+    return lc[keep]
+
 def run_bls(lc, pmin=0.5, pmax=15, n=50000):
+    lc = mask_edges(lc)
     flat = lc.flatten(window_length=901).remove_outliers(sigma_upper=4)
     pg = flat.to_periodogram(
         method="bls",

@@ -9,7 +9,7 @@ from search import run_bls
 from plots import save_plot
 
 
-LIMIT = 20
+LIMIT = 50
 FORCE = False
 TARGET_FILE = Path(__file__).resolve().parent.parent / "data" / "targets.txt"
 TARGETS = [int(x) for x in TARGET_FILE.read_text().split()][:LIMIT]

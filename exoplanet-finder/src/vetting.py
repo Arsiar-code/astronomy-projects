@@ -21,7 +21,7 @@ def odd_even(time, flux, period, t0, intransit):
         sel = intransit & (epoch % 2 == parity)
         n = sel.sum()
         if n < 5:
-            return np.nan, np,nan
+            return np.nan, np.nan
         depths.append(base - np.nanmedian(flux[sel]))
         errs.append(sigma / np.sqrt(n))
 

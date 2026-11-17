@@ -4,7 +4,7 @@ from pathlib import Path
 
 DATA = Path(__file__).resolve().parent.parent / "data"
 DB_PATH = DATA / "results.db"
-PIPELINE_VERSION = 2
+PIPELINE_VERSION = 3
 
 NEW_COLUMNS = {
     "pipeline_version": "INTEGER",
